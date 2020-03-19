@@ -1,0 +1,15 @@
+table {
+    font-size: 2rem;
+}
+
+
+#items > div > button {
+    width: 100%;
+    height: 20vh;
+    margin: 5px;
+    font-size: 1.5rem;
+}
+
+.modal-dialog {
+    margin-top: 30vh;
+}

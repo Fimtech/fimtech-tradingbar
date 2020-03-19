@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <% include partials/head.ejs %>
+    </head>
+    <body>
+        <div class="container py-4">
+            <% include partials/flash.ejs %>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <h1><%= title %></h1>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="progress" style="height: auto">
+                        <div id="progressBar" class="progress-bar"></div>
+                        <h2 id="progressBarText" class="py-4" style="margin: auto;"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <button class="btn btn-primary" id="addToggle">Add</button>
+            <button class="btn btn-success" id="start">Start</button>
+            <button class="btn btn-danger" id="stop">Stop</button>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1">
+                    <h3><span class="badge badge-info text-wrap" id="fluct"></span></h3>
+                </div>
+                <div class="col-sm-11">
+                    <input type="range" class="slider custom-range" min="1" max="200" value="50" step="1" id="fluctSlider">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="display: none;">
+            <div id="items" class="row">
+
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+            <div class="d-flex">
+                <canvas id="myChart" class="flex-fill" style="max-width: 60%"></canvas>
+                <div class="flex-fill" style="max-width: 40%">
+                    <table id="table" class="table table-striped">
+                        <thead class="thead-dark" style="font-size: 1rem;">
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Variation</th>
+                            <th scope="col" id="options">Options</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableData">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="addContainer" style="display: none">
+            <h2>Add</h2>
+            <form id="addForm">
+                <div class="form-group">
+                    <label for="formName">Name</label>
+                    <input type="text" name="name" class="form-control" id="formName">
+                </div>
+                <div class="form-group">
+                    <label for="formStart">Starting Price</label>
+                    <input type="number" step="0.1" name="startPrice" class="form-control" id="formStart">
+                </div>
+                <div class="form-group">
+                    <label for="formMin">Min</label>
+                    <input type="number" step="0.1" name="min" class="form-control" id="formMin">
+                </div>
+                <div class="form-group">
+                    <label for="formMax">Max</label>
+                    <input type="number" step="0.1" name="max" class="form-control" id="formMax">
+                </div>
+                <button type="button" id="addItem" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+
+
+        <div class="modal fade" id="transaction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="TransactionTitle">Transaction: </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 id="TransactionDate" class="text-muted">Date</h6>
+                        <h5 class="" id="TransactionName">Name</h5>
+                        <h4 class="" id="TransactionPrice">Price</h4>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                        <button type="button" id="successTransaction" class="btn btn-success" data-dismiss="modal">Validé
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="DeleteTitle">Supprimer: </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="manualOverride">
+                            <div class="form-group">
+                                <input type="hidden" name="name" class="form-control" id="DeleteName">
+                            </div>
+                            <div class="form-group">
+                                <label for="override">Manual Override</label>
+                                <input type="number" step="0.1" name="override" class="form-control" id="override">
+                            </div>
+                            <button type="button" id="addOverride" class="btn btn-primary">Go</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" id="successDelete" class="btn btn-danger" data-dismiss="modal">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include partials/scripts.ejs %>
+        <script>
+            const key = <%- iokey %>;
+        </script>
+
+        <script src="/javascripts/admin.js"></script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <% include partials/head.ejs %>
+  </head>
+  <body>
+    <div class="container pt-4">
+      <% include partials/flash.ejs %>
+      <div class="row">
+        <div class="col-md-6">
+          <h1><%= title %></h1>
+          <p>AbsINThe x FIMTECH</p>
+        </div>
+        <div class="col-md-6">
+          <div class="progress" style="height: auto">
+            <div id="progressBar" class="progress-bar"></div>
+            <h2 id="progressBarText" class="py-4" style="margin: auto;"></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid pt-4">
+      <div class="d-flex">
+        <canvas id="myChart" class="flex-fill" style="max-width: 60%"></canvas>
+        <div class="flex-fill pt-4" style="max-width: 40%">
+          <table id="table" class="table table-striped" style="font-size: 1rem">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Prix</th>
+              <th scope="col">Variation</th>
+            </tr>
+            </thead>
+            <tbody id="tableData">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <% include partials/scripts.ejs %>
+    <script src="/javascripts/listen.js"></script>
+  </body>
+</html>

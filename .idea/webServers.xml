@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="23632e75-81f3-432c-bbc5-6a3cd7b63afa" name="tradingbar" url="http://tb.fimtech.org">
+        <fileTransfer host="tb.fimtech.org" port="22" rootFolder="/root/tradingbar" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
